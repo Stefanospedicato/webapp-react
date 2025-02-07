@@ -4,11 +4,14 @@ import { useEffect } from "react";
 
 const MovieDetail = () => {
   const api_url = import.meta.env.VITE_API_URL;
-  const { fetchMovie, movie } = useGlobalContext();
+  const { fetchMovie, movie, renderReviews } = useGlobalContext();
   const { id } = useParams();
-  const { title, director, genre, image } = movie;
 
-  useEffect(() => fetchMovie(id), []);
+  useEffect(() => {
+    fetchMovie(id);
+  }, []);
+
+  const { title, director, genre, image, reviews } = movie;
 
   return (
     <section className="home-movies">
@@ -29,6 +32,7 @@ const MovieDetail = () => {
             </h6>
           </div>
         </div>
+        {reviews && reviews.length > 0 && renderReviews()}
       </div>
     </section>
   );

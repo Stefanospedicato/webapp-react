@@ -1,19 +1,31 @@
 header{
-  background-color: rgb(170, 179, 187);
-  padding: 10px;
+  background-color: #FFC107;
   font-family: Bebas Neue;
+  display: flex;
+  justify-content: center;
+  font-size: 19px;
   a{
     text-decoration: none;
   }
 }
 
 .header-title{
-  color: #FFC107;
+  color: rgb(93, 21, 93);
   font-size: 5em;
+  opacity: 0.6;
+  &:hover{
+    opacity: 1;
+    color: #5f0faf;
+  }
 }
 
 .card{
   border: none;
+  opacity: 0.6;
+  cursor: pointer;
+  &:hover{
+    opacity: 1;
+  }
 }
 
 .card-title{
@@ -59,4 +71,22 @@ header{
   position: relative;
   top: 100px;
   left: auto;
+}
+
+address{
+  color: #FFC107;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.review-box{
+  background-color: whitesmoke;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px 20px 10px 20px;
+  font-family: Bebas Neue;
+}
+
+.review-text{
+  color: black;
 }

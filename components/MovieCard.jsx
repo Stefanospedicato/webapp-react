@@ -15,7 +15,6 @@ const MovieCard = ({ movie }) => {
           <h6 className="card-text">
             <i>Genere: {genre}</i>
           </h6>
-          {/* {average_vote && <StarRating vote={average_vote} />} */}
           <Link to={`movies/${id}`} className="btn btn-warning">
             SCOPRI
           </Link>
