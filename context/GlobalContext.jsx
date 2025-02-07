@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
+import MovieCard from "../components/MovieCard";
 
 const GlobalContext = createContext();
 
@@ -11,8 +12,8 @@ const GlobalProvider = ({ children }) => {
   const renderMovies = () => {
     return movies.map((movie) => {
       return (
-        <div className="col" key={movie.id}>
-          {movie.title}
+        <div className="col-3 m-3" key={movie.id}>
+          <MovieCard movie={movie} />
         </div>
       );
     });

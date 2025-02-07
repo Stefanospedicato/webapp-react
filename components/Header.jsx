@@ -2,7 +2,7 @@ const Header = () => {
   return (
     <>
       <header>
-        <h1 className="m-3">iMovies </h1>
+        <h1 className="m-3 header-title">My Movies </h1>
       </header>
     </>
   );

@@ -9,11 +9,15 @@ const Homepage = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="row-cols-3">{renderMovies()}</div>
+    <section className="home-movies">
+      <div className="container">
+        <div className="row">
+          <div className="justify-content-center d-flex flex-wrap">
+            {renderMovies()}
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
