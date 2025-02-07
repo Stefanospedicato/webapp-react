@@ -8,11 +8,12 @@ const GlobalProvider = ({ children }) => {
   const api_url = import.meta.env.VITE_API_URL;
 
   const [movies, setMovies] = useState([]);
+  const [movie, setMovie] = useState({});
 
   const renderMovies = () => {
     return movies.map((movie) => {
       return (
-        <div className="col-3 m-3" key={movie.id}>
+        <div className="col-12 col-md-5 col-lg-3 m-3" key={movie.id}>
           <MovieCard movie={movie} />
         </div>
       );
@@ -25,7 +26,13 @@ const GlobalProvider = ({ children }) => {
     });
   };
 
-  const value = { fetchMovies, movies, renderMovies };
+  const fetchMovie = (id) => {
+    axios.get(`${api_url}/${id}`).then((res) => {
+      setMovie(res.data);
+    });
+  };
+
+  const value = { fetchMovies, movies, renderMovies, fetchMovie, movie };
 
   return (
     <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>

@@ -13,8 +13,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<DefaultLayout />}>
             <Route index element={<Homepage />} />
-            <Route path=":id" element={<MovieDetail />} />
-            <Route path="*" element={<Error404 />} />
+            <Route path="/movies/:id" element={<MovieDetail />} />
+            <Route path="/*" element={<Error404 />} />
           </Route>
         </Routes>
       </BrowserRouter>

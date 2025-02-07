@@ -1,8 +1,12 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <>
       <header>
-        <h1 className="m-3 header-title">My Movies </h1>
+        <Link to="/" className="m-3 header-title">
+          My Movies{" "}
+        </Link>
       </header>
     </>
   );

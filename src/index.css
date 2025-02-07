@@ -2,10 +2,13 @@ header{
   background-color: rgb(170, 179, 187);
   padding: 10px;
   font-family: Bebas Neue;
+  a{
+    text-decoration: none;
+  }
 }
 
 .header-title{
-  color: white;
+  color: #FFC107;
   font-size: 5em;
 }
 
@@ -17,6 +20,18 @@ header{
   text-transform: uppercase;
   font-family: Bebas Neue;
   font-size: 2em;
+  &.detail{
+    font-size: 10rem;
+    color: whitesmoke;
+  }
+}
+
+.card-director{
+  color:  #FFC107;
+}
+
+.card-genre{
+  color: darkred;
 }
 
 .home-movies{
@@ -27,4 +42,21 @@ header{
   aspect-ratio: 5/6;
   width: 100%;
   object-fit: cover;
+}
+
+.card-image{
+  width: 30%;
+  &.detail{
+    border-radius: 30px;
+  }
+}
+
+.btn-warning{
+  width: 100%;
+}
+
+.card-body.detail{
+  position: relative;
+  top: 100px;
+  left: auto;
 }
