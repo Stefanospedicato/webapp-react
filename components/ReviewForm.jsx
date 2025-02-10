@@ -4,7 +4,6 @@ import axios from "axios";
 const ReviewForm = ({ movie_id, fetchMovie }) => {
   const api_url = import.meta.env.VITE_API_URL;
   const new_api_url = `${api_url}/${movie_id}/reviews`;
-  console.log(new_api_url);
 
   const initialFormData = {
     name: "",
@@ -13,6 +12,13 @@ const ReviewForm = ({ movie_id, fetchMovie }) => {
   };
 
   const [formData, setFormData] = useState(initialFormData);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const isValid = () => {
+    if (!formData.name || !formData.vote || !formData.text) return false;
+
+    return true;
+  };
 
   const setFieldValue = (e) => {
     const { value, name } = e.target;
@@ -21,6 +27,13 @@ const ReviewForm = ({ movie_id, fetchMovie }) => {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
+
+    if (!isValid()) {
+      setErrorMessage(
+        "ATTENZIONE!! Devi inserire tutti i campi per pubblicare la recensione."
+      );
+      return;
+    }
 
     axios
       .post(new_api_url, formData, {
@@ -39,6 +52,7 @@ const ReviewForm = ({ movie_id, fetchMovie }) => {
     <div className="container">
       <div className="form">
         <h1>INSERISCI UNA RECENSIONE</h1>
+        <p className="error">{errorMessage}</p>
         <form onSubmit={handlerSubmit}>
           <div className="mb-3">
             <label className="form-label">Inserisci il tuo nome</label>

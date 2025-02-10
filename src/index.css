@@ -104,3 +104,8 @@ address{
     font-family: Bebas Neue;
   }
 }
+
+.error{
+  color: red;
+  font-family: Bebas Neue;
+}
