@@ -3,7 +3,7 @@ const StarRating = ({ vote }) => {
     return [1, 2, 3, 4, 5].map((index) => (
       <i
         key={index}
-        className={`bi bi-star${index < vote ? "-fill text-warning" : ""}`}
+        className={`bi bi-star${index < vote + 1 ? "-fill text-warning" : ""}`}
       ></i>
     ));
   };

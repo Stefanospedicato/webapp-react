@@ -3,11 +3,13 @@ import axios from "axios";
 
 const ReviewForm = ({ movie_id, fetchMovie }) => {
   const api_url = import.meta.env.VITE_API_URL;
+  const new_api_url = `${api_url}/${movie_id}/reviews`;
+  console.log(new_api_url);
 
   const initialFormData = {
     name: "",
-    text: "",
     vote: "",
+    text: "",
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -19,17 +21,27 @@ const ReviewForm = ({ movie_id, fetchMovie }) => {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
+
+    axios
+      .post(new_api_url, formData, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((res) => {
+        setFormData(initialFormData);
+        fetchMovie(movie_id);
+      })
+      .catch((err) => {
+        console.error("Errore durante l'invio della recensione:", err);
+      });
   };
 
   return (
     <div className="container">
-      <div className="form" onSubmit={handlerSubmit}>
+      <div className="form">
         <h1>INSERISCI UNA RECENSIONE</h1>
-        <form>
+        <form onSubmit={handlerSubmit}>
           <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label">
-              Inserisci il tuo nome
-            </label>
+            <label className="form-label">Inserisci il tuo nome</label>
             <input
               type="text"
               className="form-control"
@@ -40,16 +52,13 @@ const ReviewForm = ({ movie_id, fetchMovie }) => {
           </div>
           <div className="mb-3">
             <label className="form-label">Inserisci la tua recensione</label>
-            <div class="form-floating">
-              <textarea
-                class="form-control"
-                placeholder="Leave a comment here"
-                name="text"
-                type="text"
-                value={formData.text}
-                onChange={setFieldValue}
-              ></textarea>
-            </div>
+            <textarea
+              className="form-control"
+              placeholder="Lascia una recensione qui"
+              name="text"
+              value={formData.text}
+              onChange={setFieldValue}
+            ></textarea>
           </div>
           <div className="mb-3">
             <label className="form-label">
