@@ -10,12 +10,12 @@ header{
 }
 
 .header-title{
-  color: rgb(93, 21, 93);
+  color: #5f0faf;
   font-size: 5em;
-  opacity: 0.6;
+ 
   &:hover{
+    color: rgb(93, 21, 93);
     opacity: 1;
-    color: #5f0faf;
   }
 }
 
