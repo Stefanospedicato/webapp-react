@@ -90,3 +90,17 @@ address{
 .review-text{
   color: black;
 }
+
+.form{
+  color: whitesmoke;
+  border: 2px solid white;
+  padding: 20px;
+  border-radius: 10px;
+  h1{
+    font-family: Bebas Neue;
+    color: #FFC107;
+  }
+  button{
+    font-family: Bebas Neue;
+  }
+}

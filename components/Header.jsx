@@ -5,7 +5,7 @@ const Header = () => {
     <>
       <header>
         <Link to="/" className="m-3 header-title">
-          MY FILM AREA{" "}
+          FILM AREA{" "}
         </Link>
       </header>
     </>
