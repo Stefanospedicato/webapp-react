@@ -1,6 +1,11 @@
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CreateMovie = () => {
+  const api_url = import.meta.env.VITE_API_URL;
+  const navigate = useNavigate();
+
   const initialFormData = {
     title: "",
     director: "",
@@ -11,12 +16,37 @@ const CreateMovie = () => {
   };
   const [formData, setFormData] = useState(initialFormData);
 
+  const handlerSetValue = (e) => {
+    const { name, value } = e.target;
+    if (name === "image") {
+      setFormData((prev) => ({ ...prev, image: e.target.files[0] }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
+  };
+
+  const handlerSubmit = (e) => {
+    e.preventDefault();
+
+    const dataToSend = new FormData();
+    for (let key in formData) {
+      dataToSend.append(key, formData[key]);
+    }
+
+    axios
+      .post(api_url, dataToSend, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then(() => navigate("/"))
+      .catch((err) => console.log("errore"));
+  };
+
   return (
     <div className="home-movies">
       <div className="container">
         <div className="form">
           <h1>Aggiungi un nuovo film:</h1>
-          <form onSubmit="">
+          <form onSubmit={handlerSubmit}>
             <div className="mb-3">
               <label className="form-label">
                 Inserisci il titolo del film:
@@ -25,9 +55,9 @@ const CreateMovie = () => {
                 type="text"
                 className="form-control"
                 placeholder="Inserisci il titolo..."
-                name="name"
-                value=""
-                onChange=""
+                name="title"
+                value={formData.title}
+                onChange={handlerSetValue}
               />
             </div>
             <div className="mb-3">
@@ -36,9 +66,9 @@ const CreateMovie = () => {
                 type="text"
                 className="form-control"
                 placeholder="Inserisci il regista..."
-                name="name"
-                value=""
-                onChange=""
+                name="director"
+                value={formData.director}
+                onChange={handlerSetValue}
               />
             </div>
             <div className="mb-3">
@@ -49,9 +79,9 @@ const CreateMovie = () => {
                 type="text"
                 className="form-control"
                 placeholder="Inserisci il genere..."
-                name="name"
-                value=""
-                onChange=""
+                name="genre"
+                value={formData.genre}
+                onChange={handlerSetValue}
               />
             </div>
             <div className="mb-3">
@@ -60,9 +90,10 @@ const CreateMovie = () => {
                 type="number"
                 className="form-control"
                 placeholder="Inserisci l'anno..."
-                name="name"
-                value=""
-                onChange=""
+                name="release_year"
+                value={formData.release_year}
+                onChange={handlerSetValue}
+                min={1800}
               />
             </div>
 
@@ -73,9 +104,9 @@ const CreateMovie = () => {
               <textarea
                 className="form-control"
                 placeholder="inserisci descrizione..."
-                name="text"
-                value=""
-                onChange=""
+                name="abstract"
+                value={formData.abstract}
+                onChange={handlerSetValue}
               ></textarea>
             </div>
             <div className="mb-3">
@@ -85,8 +116,8 @@ const CreateMovie = () => {
               <input
                 type="file"
                 className="form-control"
-                name="name"
-                onChange=""
+                name="image"
+                onChange={handlerSetValue}
               />
             </div>
             <div className="mb-3 form-check"></div>

@@ -8,7 +8,7 @@ const Header = () => {
           FILM AREA{" "}
         </Link>
         <Link className="btn header-title" to="/movies/create">
-          Aggiungi un film <i class="bi bi-plus"></i>
+          Aggiungi un film <i className="bi bi-plus"></i>
         </Link>
       </header>
     </>
