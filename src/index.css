@@ -2,7 +2,7 @@ header{
   background-color: #FFC107;
   font-family: Bebas Neue;
   display: flex;
-  justify-content: center;
+  justify-content:space-around;
   font-size: 19px;
   a{
     text-decoration: none;
@@ -12,7 +12,12 @@ header{
 .header-title{
   color: #5f0faf;
   font-size: 5em;
- 
+  &.btn{
+    font-size: 2em;
+    position: relative;
+    top: 50px;
+    left: auto;
+  }
   &:hover{
     color: rgb(93, 21, 93);
     opacity: 1;

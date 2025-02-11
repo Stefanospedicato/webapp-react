@@ -4,6 +4,7 @@ import DefaultLayout from "../layouts/DefaultLayout";
 import Homepage from "../pages/Homepage";
 import MovieDetail from "../pages/MovieDetail";
 import Error404 from "../pages/Error404";
+import CreateMovie from "../pages/CreateMovie";
 import { GlobalProvider } from "../context/GlobalContext";
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="/" element={<DefaultLayout />}>
             <Route index element={<Homepage />} />
             <Route path="/movies/:id" element={<MovieDetail />} />
+            <Route path="/movies/create" element={<CreateMovie />} />
             <Route path="/*" element={<Error404 />} />
           </Route>
         </Routes>
