@@ -59,6 +59,7 @@ const ReviewForm = ({ movie_id, fetchMovie }) => {
             <input
               type="text"
               className="form-control"
+              placeholder="Inserisci il tuo nome..."
               name="name"
               value={formData.name}
               onChange={setFieldValue}
@@ -68,7 +69,7 @@ const ReviewForm = ({ movie_id, fetchMovie }) => {
             <label className="form-label">Inserisci la tua recensione</label>
             <textarea
               className="form-control"
-              placeholder="Lascia una recensione qui"
+              placeholder="Lascia una recensione qui..."
               name="text"
               value={formData.text}
               onChange={setFieldValue}
