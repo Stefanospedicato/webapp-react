@@ -64,11 +64,11 @@ header{
 .card-image{
   width: 30%;
   &.detail{
-    border-radius: 30px;
+    border-radius: 10px;
   }
 }
 
-.btn-warning{
+.btn-warning, .btn-danger{
   width: 100%;
 }
 
@@ -113,4 +113,8 @@ address{
 .error{
   color: red;
   font-family: Bebas Neue;
+}
+
+.abstract{
+  color: whitesmoke;
 }

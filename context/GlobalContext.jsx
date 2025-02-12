@@ -39,6 +39,16 @@ const GlobalProvider = ({ children }) => {
     });
   };
 
+  const deleteMovie = (id, cb) => {
+    axios
+      .delete(`${api_url}/${id}`)
+      .then((res) => {
+        cb();
+        fetchMovies();
+      })
+      .catch((err) => console.log(err));
+  };
+
   const value = {
     fetchMovies,
     movies,
@@ -46,6 +56,7 @@ const GlobalProvider = ({ children }) => {
     fetchMovie,
     movie,
     renderReviews,
+    deleteMovie,
   };
 
   return (
