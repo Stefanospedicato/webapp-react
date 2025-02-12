@@ -47,7 +47,7 @@ header{
   font-family: Bebas Neue;
   font-size: 2em;
   &.detail{
-    font-size: 7rem;
+    font-size: 5rem;
     color: whitesmoke;
   }
 }
