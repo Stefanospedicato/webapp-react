@@ -15,6 +15,20 @@ const CreateMovie = () => {
     image: null,
   };
   const [formData, setFormData] = useState(initialFormData);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const isValid = () => {
+    if (
+      !formData.title ||
+      !formData.director ||
+      !formData.genre ||
+      !formData.abstract ||
+      !formData.image
+    )
+      return false;
+
+    return true;
+  };
 
   const handlerSetValue = (e) => {
     const { name, value } = e.target;
@@ -27,6 +41,13 @@ const CreateMovie = () => {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
+
+    if (!isValid()) {
+      setErrorMessage(
+        "ATTENZIONE!! Devi inserire tutti i campi per aggiungere un nuovo film."
+      );
+      return;
+    }
 
     const dataToSend = new FormData();
     for (let key in formData) {
@@ -46,6 +67,7 @@ const CreateMovie = () => {
       <div className="container">
         <div className="form">
           <h1>Aggiungi un nuovo film:</h1>
+          <p className="error">{errorMessage}</p>
           <form onSubmit={handlerSubmit}>
             <div className="mb-3">
               <label className="form-label">
